@@ -29,3 +29,8 @@ The processing pipelines generate the standardized files published on Hugging Fa
 - `genes.tsv`: standardized gene identifiers in the same row order as the matrix
 - `metadata.json`: provenance and processing metadata
 - `README.md`: embedding-level documentation
+
+## Master gene table
+
+The construction pipeline for the standardized human master gene table is documented in [`master_gene_table/`](master_gene_table/README.md).
+
