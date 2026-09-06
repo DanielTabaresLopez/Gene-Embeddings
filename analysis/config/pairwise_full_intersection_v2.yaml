@@ -1,0 +1,69 @@
+# Pairwise Full-Intersection (PFI) analysis - manifest-frozen configuration v2.0
+#
+# The Excel manifest is the only source of truth for panel membership, display
+# names, and modalities. Packages present in the Hugging Face resource but
+# absent from the manifest are intentionally ignored.
+
+manifest_path: "embedding_manifest.xlsx"
+manifest_sheet: 0
+manifest_columns:
+  embedding_id: "Files name"
+  display_name: "Embedding display name"
+  modality: "Final modality"
+expected_embedding_count: 67
+expected_panel_sha256: "1606636e420729970523626c80b679f19f404607101397e36bede55282aedd90"
+
+# Hugging Face source. For the final paper release, replace "main" with the
+# immutable dataset commit SHA used for the analysis. Step 0 records the
+# resolved SHA even when "main" is used during development.
+hf_repo_id: "embeddingsSSRF/gene_embeddings"
+hf_repo_type: "dataset"
+hf_revision: "main"
+hf_download_workers: 4
+
+# Local Hugging Face dataset mirror/cache on Euler.
+library_root: "~/data/hf_gene_embeddings"
+array_key: "embeddings"
+id_column: "ensembl_gene_id"
+
+# Relative paths are resolved from this YAML file, making the repository
+# relocatable. These new directories must not be shared with an earlier run.
+selection_output: "../results/20_pairwise_full_intersection/selection_manifest_v2"
+intersection_output: "../results/20_pairwise_full_intersection/intersections_manifest_v2"
+analysis_output: "../results/20_pairwise_full_intersection/pair_metrics_manifest_v2"
+
+# Optional comparison against the earlier fixed-universe atlas. Leave null for
+# a standalone analysis. When supplied, only pairs shared by both panels are
+# compared; new embeddings are expected to have no atlas counterpart.
+atlas_pair_table: null
+atlas_gene_count: 4605
+
+# Optional pair shortlist. null evaluates all 2,211 manifest pairs.
+pair_shortlist: null
+
+seed: 20260725
+min_genes: 100
+
+preprocessing_modes:
+  - "raw"
+  - "row_normalized"
+
+rbf_bandwidth_factors:
+  - 1.0
+
+# RBF and local overlap are capped exactly as in the previous analysis.
+rbf_max_n: 6000
+local_max_n: 8000
+
+local_k_values:
+  - 10
+  - 25
+  - 50
+  - 100
+
+tie_combination_mode: "min"
+local_permutations: 199
+
+kernel_block_size: 1024
+local_block_size: 512
+cache_capacity: 3
