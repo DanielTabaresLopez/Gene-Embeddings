@@ -7,7 +7,7 @@
 
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 CONFIG="${PFI_CONFIG:-${ROOT}/config/pairwise_full_intersection_v2.yaml}"
 
 if [[ -n "${PFI_CONDA_ENV:-}" ]]; then
