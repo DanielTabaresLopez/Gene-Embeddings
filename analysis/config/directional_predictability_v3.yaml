@@ -1,0 +1,94 @@
+# Directional Predictability v3.2 — complete manifest-driven analysis
+#
+# This publication configuration analyzes every embedding in the accompanying
+# Excel manifest from scratch. The manifest is the sole source of truth for
+# panel membership, display names, and modalities.
+
+manifest_path: "embedding_manifest.xlsx"
+manifest_sheet: 0
+manifest_columns:
+  embedding_id: "Files name"
+  display_name: "Embedding display name"
+  modality: "Final modality"
+expected_embedding_count: 67
+expected_panel_sha256: "73d04f0435847de05e585905c6c7dcbbdbaeed67b447e24d772097fe3f9f937f"
+
+# Frozen public input dataset. These fields document the source; download the
+# repository at this revision into library_root before running the workflow.
+hf_repo_id: "BoevaLab/Gene-Embedding-Hub-dataset"
+hf_repo_type: "dataset"
+hf_revision: "41080a5c88bf5fa40d76e0424347eea893dd0ccc"
+library_root: "data/Gene-Embedding-Hub-dataset"
+array_key: "embeddings"
+id_column: "ensembl_gene_id"
+
+# Paths are relative to the project root when the supplied jobs are used.
+splits_output: "results/32_directional_predictability_v3/splits_manifest67"
+pca_output: "results/32_directional_predictability_v3/pca_cache_manifest67_k1024_v90/{split_column}"
+train_output: "results/32_directional_predictability_v3/sweep_manifest67_v90"
+
+signal_filter_table: null
+signal_filter_r2: 0.05
+signal_filter_include_capped: true
+v1_pca_summary: null
+signal_filter_always_include: []
+
+global_exclusions: []
+analysis_exclusions: []
+
+seed: 20260728
+
+split_fractions: [0.70, 0.10, 0.20]
+split_column: split_family
+family_cluster_file: null
+family_reference_embedding: esm2
+family_similarity_threshold: 0.95
+family_embedding_cluster_method: birch
+family_birch_branching_factor: 50
+family_max_group_fraction: 0.05
+family_max_split_deviation: 0.03
+family_min_grouped_gene_fraction: 0.05
+
+pca_max_components: 1024
+pca_min_components: 16
+pca_variance_target: 0.90
+output_variance_target: 0.90
+min_target_variance_retained: 0.0
+compute_full_target_r2: true
+pca_cap_audit_output: "results/32_directional_predictability_v3/pca_cap_audit_manifest67"
+
+input_mode: raw
+raw_max_dim: null
+depths: [0, 1, 2, 3, 4]
+hidden_width_options: [32, 64, 128, 256, 512]
+
+mlp_dropout: 0.1
+mlp_lr: 0.001
+linear_lr: 0.0003
+mlp_weight_decay: 0.0001
+mlp_gradient_clip: 1.0
+mlp_batch_size: 256
+mlp_max_epochs: 300
+mlp_patience: 20
+
+ridge_alphas:
+  - 0.01
+  - 0.1
+  - 1.0
+  - 10.0
+  - 100.0
+  - 1000.0
+  - 10000.0
+  - 100000.0
+  - 1000000.0
+  - 10000000.0
+  - 100000000.0
+  - 1000000000.0
+
+device: auto
+retrieval_ks: [1, 5, 10]
+spectrum_thresholds: [0.1, 0.25, 0.5, 0.75]
+save_spectra: true
+cache_capacity: 2
+ridge_max_input_dim: 4000
+unstable_r2_floor: -1.0
