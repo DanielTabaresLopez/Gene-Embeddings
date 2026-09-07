@@ -3,8 +3,8 @@
 #   module load ...       whatever provides Python 3.10+
 module load stack/2024-06 python/3.11.6 2>/dev/null || true
 
-DP_EULER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DP_DEFAULT_PROJECT="$(cd "${DP_EULER_DIR}/../../.." && pwd)"
+DP_SLURM_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DP_DEFAULT_PROJECT="$(cd "${DP_SLURM_DIR}/../.." && pwd)"
 
 export PROJECT="${DP_PROJECT_ROOT:-$DP_DEFAULT_PROJECT}"
 export DP_VENV="${DP_VENV:-$PROJECT/.venv}"
