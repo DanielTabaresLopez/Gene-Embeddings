@@ -1,6 +1,5 @@
-# Sourced by every DP3 Euler job. Adjust the module line for your stack:
-#   module avail          to list what is available
-#   module load ...       whatever provides Python 3.10+
+# Sourced by every directional-predictability Slurm job.
+# Adjust the module line for the local cluster.
 module load stack/2024-06 python/3.11.6 2>/dev/null || true
 
 DP_SLURM_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
