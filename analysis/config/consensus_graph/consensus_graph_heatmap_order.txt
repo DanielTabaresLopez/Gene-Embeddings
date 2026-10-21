@@ -1,8 +1,3 @@
-# Reference figure order, expressed with current stable embedding IDs.
-# Read from top to bottom for rows, and left to right for columns.
-# IDs absent from the fixed common panel are skipped, never added to it.
-# DRKG and the two STRING embeddings follow the positions in the supplied
-# newer label-list reference. The obsolete GenePT IDs use their current IDs.
 uce_33l
 newt_go_graph
 frogs_archs4_256
