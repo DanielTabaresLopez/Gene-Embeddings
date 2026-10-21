@@ -1,0 +1,57 @@
+embedding_id	display_name	modality
+mahi_global	Mahi (global)	Multimodal
+mahi_all_contexts_mean	Mahi (all-context mean)	Multimodal
+scprint_medium_v1_5_gene	scPRINT	Single-cell
+deepnf_string_v12_ppmi_svd_fusion	deepNF (STRING)	Networks
+primekg_nonppi_biomedical_context_tfidf_svd256	PrimeKG (non-PPI)	Knowledge graph
+hetionet_nonppi_biomedical_context_tfidf_svd256	Hetionet (non-PPI)	Knowledge graph
+genept_model3_gene_protein	GenePT Model 3	Biomedical text
+pubmedbert_gene_protein_summary	PubMedBERT (gene+protein text)	Biomedical text
+biobert_gene_protein_summary	BioBERT (gene+protein text)	Biomedical text
+opa2vec_goa_human	OPA2Vec	Functional
+probe_esmb1	ESM-1b	Protein sequence
+geneformer_v2_316m	Geneformer	Single-cell
+esm2	ESM-2	Protein sequence
+probe_t5	protT5	Protein sequence
+genept_ada	GenePT Ada	Biomedical text
+probe_albert	protALBERT	Protein sequence
+probe_xlnet	protXLNet	Protein sequence
+probe_bert_bfd	protBERT-BFD	Protein sequence
+probe_seqvec	SeqVec	Protein sequence
+orthrus_base_4track_full_transcript	Orthrus	RNA sequence
+scgpt_whole_human	scGPT (Whole)	Single-cell
+bioconceptvec_skipgram	BioConceptVec Skip-Gram	Biomedical text
+node2vec_consensus_ppi	Node2Vec (PPI)	Networks
+bioconceptvec_cbow	BioConceptVec CBOW	Biomedical text
+bioconceptvec_fasttext	BioConceptVec fastText	Biomedical text
+scgpt_pancancer	scGPT (PanCancer)	Single-cell
+msa_transformer_depth1_uniprot_human	MSA Transformer (depth 1)	Protein sequence
+probe_bert_pfam	BERT-PFAM	Protein sequence
+nt_v2_500m_multispecies_cds	Nucleotide Transformer v2	DNA sequence
+probe_unirep	UniRep	Protein sequence
+probe_blast	BLAST	Protein sequence
+probe_hmmer	HMMER	Protein sequence
+rnafm_full_transcript	RNA-FM	RNA sequence
+alphagenome_tss1mb_regulatory_tracksummary_pca256	AlphaGenome	Regulatory genomics
+enformer_tss_393kb_human_central3	Enformer	Regulatory genomics
+gtex_tissue_median_log1p_zscore	GTEx	Expression
+dnabert2_117m_cds	DNABERT-2	DNA sequence
+gene2vec	Gene2Vec	Expression
+hyenadna_medium_160k_cds	HyenaDNA	DNA sequence
+probe_protvec	ProtVec	Protein sequence
+basenji2_tss_131kb_human_central3	Basenji2	Regulatory genomics
+probe_aac	AAC	Protein sequence
+probe_learned_vec	Learned-Vec	Protein sequence
+bioconceptvec_glove	BioConceptVec GloVe	Biomedical text
+probe_apaac	APAAC	Protein sequence
+probe_cpc_prot	CPC-PROT	Protein sequence
+probe_tcga_embedding	TCGA	Expression
+depmap_crispr_gene_effect_pca256	DepMap CRISPR	Functional
+helix_mrna_full_transcript	Helix-mRNA	RNA sequence
+deepsea_tss_1kb_epigenomic_probs	DeepSEA	Regulatory genomics
+spliceai_canonical_splice_site_profile	SpliceAI	Regulatory genomics
+scfoundation_gene_pos	scFoundation	Single-cell
+uce_33l	UCE-33L	Multimodal
+string_gnn	STRING GNN	Networks
+string_wavegc	STRING WaveGC	Networks
+drkg_transe	DRKG TransE	Knowledge graph

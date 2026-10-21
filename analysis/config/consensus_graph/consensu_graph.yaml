@@ -1,0 +1,97 @@
+# Publication consensus graph: calibrated linear CKA + calibrated k=100 overlap.
+# CS_PROJECT_ROOT is the repository analysis/ directory. Run stages through
+# scripts/consensus_graph/run_consensus.sh to apply this configuration.
+# Required external inputs: pinned embedding matrices and completed PFI table.
+# PFI is used for sensitivity comparisons, not the primary common-gene scores.
+# Paths are resolved relative to this YAML unless absolute or overridden by an
+# environment variable/command-line option.
+
+manifest_path: consensus_graph_embedding_manifest.xlsx
+manifest_sheet: 0
+manifest_columns:
+  embedding_id: Files name
+  display_name: Embedding display name
+  modality: Final modality
+expected_embedding_count: 67
+expected_panel_sha256: 7fd674dcaded57139f4df7803e41e49563a74938a54a1833e585462aac81f5ad
+
+# Frozen source used for the analysis.
+hf_repo_id: BoevaLab/Gene-Embedding-Hub-dataset
+hf_repo_type: dataset
+hf_revision: 41080a5c88bf5fa40d76e0424347eea893dd0ccc
+
+# Portable default. Override with CS_LIBRARY_ROOT or --library-root on a cluster.
+library_root: ../data/Gene-Embedding-Hub-dataset
+embeddings_subdir: data/embeddings
+array_key: embeddings
+id_column: ensembl_gene_id
+
+# Select the maximum number of embeddings whose strict intersection contains
+# at least this many finite, non-zero gene rows.
+target_common_genes: 14000
+alternatives: 10
+min_retained_embeddings: 2
+milp_time_limit_seconds: 900
+
+selection_output: ../results/consensus_graph_v2/00_panel_selection
+
+# The publication run is frozen to the unique rank-1 solution already selected
+# above. Re-running stage 1 should reproduce these files before downstream work.
+frozen_panel_source: consensus_graph_frozen_panel
+frozen_panel_output: ../results/consensus_graph_v2/01_fixed_panel
+expected_retained_embedding_count: 56
+expected_common_gene_count: 14039
+expected_pair_count: 1540
+expected_retained_file_sha256: 8c60d7a0bca2b6e10916b0d750f4e304a5a93e72e758e0cc3b0d167ed9f966c7
+expected_common_genes_sha256: caa45ecca3ce0526d2dbb53e9dbf008016a1d6ba513488682a22ca69a04ee238
+
+# Fixed-common atlas. All 1,540 pairs are recomputed because the 14,039-gene
+# set differs from the earlier 14,184-gene panel.
+atlas_cache: ../results/consensus_graph_v2/02_common_panel_atlas_cache
+atlas_output: ../results/consensus_graph_v2/02_common_panel_atlas
+atlas_seed: 20260725
+atlas_null_shuffles: 5
+# Additional k values reproduce the original concordance diagnostics only.
+# The consensus and graph use only the selected k=100 view.
+atlas_k_values: [10, 25, 50, 100]
+atlas_feature_block: 256
+atlas_neighbour_row_block: 128
+atlas_dpi: 300
+
+# Pairwise full-intersection sensitivity input from the separately reproducible
+# PFI workflow in this repository. Override with CS_PFI_TABLE on Euler.
+pfi_pair_results: ../results/20_pairwise_full_intersection/pair_metrics_manifest_v2/pair_results.tsv
+
+pairwise_evidence_output: ../results/consensus_graph_v2/03_pairwise_evidence
+views_output: ../results/consensus_graph_v2/04_views
+concordance_output: ../results/consensus_graph_v2/05_view_concordance
+consensus_output: ../results/consensus_graph_v2/06_consensus
+modalities_output: ../results/consensus_graph_v2/07_modalities
+graph_output: ../results/consensus_graph_v2/08_graph_structure
+interpretation_output: ../results/consensus_graph_v2/09_community_interpretation
+figures_output: ../results/consensus_graph_v2/10_figures
+final_audit_output: ../results/consensus_graph_v2/11_final_audit
+
+concordance_permutations: 9999
+concordance_seed: 33105
+# Publication-primary consensus (enforced by cs_06): equal percentile-rank
+# average of calibrated linear CKA and calibrated local overlap at k=100.
+# The affinity graph is then the symmetrized 10-nearest-neighbour graph.
+primary_local_k: 100
+primary_platonic_view: platonic_linear_calibrated
+primary_local_view: aristotelian_local_k100_calibrated
+consensus_weights: [0.5, 0.5]
+consensus_configurations: [primary]
+graph_k: 10
+graph_permutations: 9999
+graph_seed: 33108
+interpretation_permutations: 9999
+interpretation_seed: 33109
+figure_layout_seed: 33110
+figure_layout_iterations: 700
+figure_top_bridge_labels: 56
+heatmap_order_file: consensus_graph_heatmap_order.txt
+
+# Optional: point to one old candidate-panel directory containing
+# retained_embeddings.txt and common_genes.txt. Leave null if unavailable.
+previous_panel_dir: null
