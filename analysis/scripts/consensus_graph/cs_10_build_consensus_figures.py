@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""Build publication-ready figures for Workflow 33.
-
+"""
 This stage visualizes results already established in cs_06 through cs_09. It
 does not recompute similarities, communities, modality tests, or residuals.  The
 network layout is a deterministic weighted force layout learned only from the
