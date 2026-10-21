@@ -35,8 +35,7 @@ milp_time_limit_seconds: 900
 
 selection_output: ../results/consensus_graph_v2/00_panel_selection
 
-# The publication run is frozen to the unique rank-1 solution already selected
-# above. Re-running stage 1 should reproduce these files before downstream work.
+
 frozen_panel_source: consensus_graph_frozen_panel
 frozen_panel_output: ../results/consensus_graph_v2/01_fixed_panel
 expected_retained_embedding_count: 56
@@ -52,14 +51,14 @@ atlas_output: ../results/consensus_graph_v2/02_common_panel_atlas
 atlas_seed: 20260725
 atlas_null_shuffles: 5
 # Additional k values reproduce the original concordance diagnostics only.
-# The consensus and graph use only the selected k=100 view.
+# The consensus and graph use only the k=100 view.
 atlas_k_values: [10, 25, 50, 100]
 atlas_feature_block: 256
 atlas_neighbour_row_block: 128
 atlas_dpi: 300
 
 # Pairwise full-intersection sensitivity input from the separately reproducible
-# PFI workflow in this repository. Override with CS_PFI_TABLE on Euler.
+# PFI workflow in this repository.
 pfi_pair_results: ../results/20_pairwise_full_intersection/pair_metrics_manifest_v2/pair_results.tsv
 
 pairwise_evidence_output: ../results/consensus_graph_v2/03_pairwise_evidence
@@ -74,9 +73,8 @@ final_audit_output: ../results/consensus_graph_v2/11_final_audit
 
 concordance_permutations: 9999
 concordance_seed: 33105
-# Publication-primary consensus (enforced by cs_06): equal percentile-rank
-# average of calibrated linear CKA and calibrated local overlap at k=100.
-# The affinity graph is then the symmetrized 10-nearest-neighbour graph.
+
+
 primary_local_k: 100
 primary_platonic_view: platonic_linear_calibrated
 primary_local_view: aristotelian_local_k100_calibrated
