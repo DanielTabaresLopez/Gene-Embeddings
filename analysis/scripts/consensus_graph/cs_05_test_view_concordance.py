@@ -6,12 +6,6 @@ The 1,540 embedding pairs are not independent because every embedding occurs in
 with a Mantel-style node-label permutation: one matrix has its rows and columns
 permuted together, and Spearman correlation is recomputed on the upper triangle.
 
-The publication-primary comparison is the calibrated fixed-common Platonic
-linear-CKA view versus calibrated fixed-common Aristotelian local overlap at
-k=100. Raw-score, alternative-k, multi-k, and pairwise-intersection RBF comparisons are
-sensitivity analyses.  Leave-one-embedding-out correlations test whether a
-single embedding drives the result.
-
 This stage reads only consensus-graph view tables. It does not load embeddings,
 PCA caches, or directional-predictability/MLP outputs, and it does not construct
 the consensus itself.
