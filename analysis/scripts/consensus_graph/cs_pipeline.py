@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the publication consensus workflow from the repository's analysis/ directory.
+"""Run the consensus workflow from the repository's analysis/ directory.
 
 This launcher wires the original computational scripts to the YAML. The paper
 uses calibrated linear CKA and calibrated gene-neighbour overlap at k=100,
