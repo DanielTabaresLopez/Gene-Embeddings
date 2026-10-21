@@ -3,7 +3,7 @@
 
 The equal-rank consensus is an affinity, not a Euclidean kernel or metric
 distance. This stage therefore represents the 56 embeddings as a weighted,
-symmetrized k-nearest-neighbour graph.  Its pre-specified primary graph uses
+symmetrized k-nearest-neighbour graph.  Its primary graph uses
 k=10.  Communities are learned without modality labels by deterministic
 greedy weighted-modularity optimization at resolution 1.
 
