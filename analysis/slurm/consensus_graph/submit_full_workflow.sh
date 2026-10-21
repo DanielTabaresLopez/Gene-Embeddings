@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
-# Submit the entire publication workflow. Use --frozen-panel to begin from
+# Submit the entire workflow. Use --frozen-panel to begin from
 # the included, hash-checked 56-embedding/14,039-gene panel instead of stage 1.
-# Example from analysis/:
-#   export CS_VENV="$HOME/envs/platonic_gene_repr"
-#   export CS_LIBRARY_ROOT="/path/to/Gene-Embedding-Hub-dataset"
-#   export CS_PFI_TABLE="/path/to/pair_results.tsv"
-#   bash slurm/consensus_graph/submit_full_workflow.sh
 set -euo pipefail
 CS_SLURM_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 export CS_PROJECT_ROOT="${CS_PROJECT_ROOT:-$(cd "${CS_SLURM_DIR}/../.." && pwd)}"
