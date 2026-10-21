@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-"""Build the guarded two-view equal-rank consensus for Workflow 33.
+"""The upstream concordance stage pre-specifies the fusion rule:
 
-The upstream concordance stage pre-specifies the fusion rule:
-
-1. rank the 1,540 calibrated fixed-panel Platonic linear-CKA scores;
-2. rank the 1,540 calibrated fixed-panel Aristotelian local-overlap scores at
+1. rank the 1,540 calibrated fixed-panel linear-CKA scores;
+2. rank the 1,540 calibrated fixed-panel local-overlap scores at
    k=100;
 3. convert each tie-aware rank to a percentile in [0, 1]; and
 4. average the two percentile scores with weights 0.5 and 0.5.
